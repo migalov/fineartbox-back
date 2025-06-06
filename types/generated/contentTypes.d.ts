@@ -407,6 +407,34 @@ export interface ApiConstructionConstruction
   };
 }
 
+export interface ApiHeaderMenuHeaderMenu extends Struct.SingleTypeSchema {
+  collectionName: 'header_menus';
+  info: {
+    displayName: 'Header Menu';
+    pluralName: 'header-menus';
+    singularName: 'header-menu';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::header-menu.header-menu'
+    > &
+      Schema.Attribute.Private;
+    menuContent: Schema.Attribute.Component<'ui.list-menu', true>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -917,6 +945,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::construction.construction': ApiConstructionConstruction;
+      'api::header-menu.header-menu': ApiHeaderMenuHeaderMenu;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

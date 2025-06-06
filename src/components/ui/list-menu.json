@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_ui_list_menus",
+  "info": {
+    "displayName": "ListMenu",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    },
+    "itemsMenu": {
+      "type": "component",
+      "component": "ui.item-menu",
+      "repeatable": true
+    },
+    "line": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "config": {}
+}

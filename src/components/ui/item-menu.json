@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_ui_item_menus",
+  "info": {
+    "displayName": "ItemMenu",
+    "icon": "link"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -75,6 +75,32 @@ export interface UiHtmlBlock extends Struct.ComponentSchema {
   };
 }
 
+export interface UiItemMenu extends Struct.ComponentSchema {
+  collectionName: 'components_ui_item_menus';
+  info: {
+    displayName: 'ItemMenu';
+    icon: 'link';
+  };
+  attributes: {
+    href: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+  };
+}
+
+export interface UiListMenu extends Struct.ComponentSchema {
+  collectionName: 'components_ui_list_menus';
+  info: {
+    displayName: 'ListMenu';
+    icon: 'bulletList';
+  };
+  attributes: {
+    href: Schema.Attribute.String;
+    itemsMenu: Schema.Attribute.Component<'ui.item-menu', true>;
+    label: Schema.Attribute.String;
+    line: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+  };
+}
+
 export interface UiReadyProject extends Struct.ComponentSchema {
   collectionName: 'components_ui_ready_projects';
   info: {
@@ -95,6 +121,8 @@ declare module '@strapi/strapi' {
       'slider.slide': SliderSlide;
       'ui.card': UiCard;
       'ui.html-block': UiHtmlBlock;
+      'ui.item-menu': UiItemMenu;
+      'ui.list-menu': UiListMenu;
       'ui.ready-project': UiReadyProject;
     }
   }
