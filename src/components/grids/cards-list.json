@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_grids_cards_lists",
+  "info": {
+    "displayName": "CardsList"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "cardsList": {
+      "type": "component",
+      "component": "ui.card",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

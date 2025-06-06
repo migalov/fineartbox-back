@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_ui_ready_projects",
+  "info": {
+    "displayName": "ReadyProject",
+    "icon": "picture"
+  },
+  "options": {},
+  "attributes": {
+    "src": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

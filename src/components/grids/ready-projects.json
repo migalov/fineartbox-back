@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_grids_ready_projects",
+  "info": {
+    "displayName": "ReadyProjects",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "projectsList": {
+      "type": "component",
+      "component": "ui.ready-project",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
