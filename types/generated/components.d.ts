@@ -23,6 +23,30 @@ export interface GridsReadyProjects extends Struct.ComponentSchema {
   };
 }
 
+export interface GridsSeoBlock extends Struct.ComponentSchema {
+  collectionName: 'components_grids_seo_blocks';
+  info: {
+    displayName: 'SEO Block';
+    icon: 'search';
+  };
+  attributes: {
+    columnOne: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    columnTwo: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+  };
+}
+
 export interface SliderSlide extends Struct.ComponentSchema {
   collectionName: 'components_slider_slides';
   info: {
@@ -53,6 +77,36 @@ export interface UiCard extends Struct.ComponentSchema {
     description: Schema.Attribute.String;
     href: Schema.Attribute.String;
     src: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface UiFaqItem extends Struct.ComponentSchema {
+  collectionName: 'components_ui_faq_items';
+  info: {
+    displayName: 'FAQ Item';
+    icon: 'question';
+  };
+  attributes: {
+    htmlContent: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface UiFaqList extends Struct.ComponentSchema {
+  collectionName: 'components_ui_faq_lists';
+  info: {
+    displayName: 'FAQ List';
+    icon: 'question';
+  };
+  attributes: {
+    faqList: Schema.Attribute.Component<'ui.faq-item', true>;
     title: Schema.Attribute.String;
   };
 }
@@ -118,8 +172,11 @@ declare module '@strapi/strapi' {
     export interface ComponentSchemas {
       'grids.cards-list': GridsCardsList;
       'grids.ready-projects': GridsReadyProjects;
+      'grids.seo-block': GridsSeoBlock;
       'slider.slide': SliderSlide;
       'ui.card': UiCard;
+      'ui.faq-item': UiFaqItem;
+      'ui.faq-list': UiFaqList;
       'ui.html-block': UiHtmlBlock;
       'ui.item-menu': UiItemMenu;
       'ui.list-menu': UiListMenu;

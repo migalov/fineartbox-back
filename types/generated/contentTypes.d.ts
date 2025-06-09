@@ -435,6 +435,36 @@ export interface ApiHeaderMenuHeaderMenu extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMainPageMainPage extends Struct.SingleTypeSchema {
+  collectionName: 'main_pages';
+  info: {
+    displayName: 'Main Page';
+    pluralName: 'main-pages';
+    singularName: 'main-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    FAQBlock: Schema.Attribute.Component<'ui.faq-list', false>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::main-page.main-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    SEOBlock: Schema.Attribute.Component<'grids.seo-block', true>;
+    Slider: Schema.Attribute.Component<'slider.slide', true>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -946,6 +976,7 @@ declare module '@strapi/strapi' {
       'admin::user': AdminUser;
       'api::construction.construction': ApiConstructionConstruction;
       'api::header-menu.header-menu': ApiHeaderMenuHeaderMenu;
+      'api::main-page.main-page': ApiMainPageMainPage;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

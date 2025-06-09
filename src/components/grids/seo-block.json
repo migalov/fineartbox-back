@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_grids_seo_blocks",
+  "info": {
+    "displayName": "SEO Block",
+    "icon": "search"
+  },
+  "options": {},
+  "attributes": {
+    "columnOne": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
+    },
+    "columnTwo": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
+    }
+  },
+  "config": {}
+}

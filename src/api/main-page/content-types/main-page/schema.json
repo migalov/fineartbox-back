@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "main_pages",
+  "info": {
+    "singularName": "main-page",
+    "pluralName": "main-pages",
+    "displayName": "Main Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Slider": {
+      "type": "component",
+      "component": "slider.slide",
+      "repeatable": true
+    },
+    "FAQBlock": {
+      "type": "component",
+      "component": "ui.faq-list",
+      "repeatable": false
+    },
+    "SEOBlock": {
+      "type": "component",
+      "component": "grids.seo-block",
+      "repeatable": true
+    }
+  }
+}

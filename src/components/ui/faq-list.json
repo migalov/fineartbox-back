@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_ui_faq_lists",
+  "info": {
+    "displayName": "FAQ List",
+    "icon": "question"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "faqList": {
+      "type": "component",
+      "component": "ui.faq-item",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
