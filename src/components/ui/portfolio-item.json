@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_ui_portfolio_items",
+  "info": {
+    "displayName": "PortfolioItem"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "desktopColumns": {
+      "type": "integer"
+    },
+    "desktopRows": {
+      "type": "integer"
+    },
+    "mobileColumns": {
+      "type": "integer"
+    },
+    "mobileRows": {
+      "type": "integer"
+    },
+    "desktopAspectRatio": {
+      "type": "string"
+    },
+    "mobileAspectRatio": {
+      "type": "string"
+    },
+    "backgroundColor": {
+      "type": "string"
+    },
+    "backgroundImage": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_filter_filter_blocks",
+  "info": {
+    "displayName": "FilterBlock",
+    "icon": "plus"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "options": {
+      "type": "component",
+      "component": "filter.option",
+      "repeatable": true
+    },
+    "category": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

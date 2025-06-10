@@ -465,6 +465,162 @@ export interface ApiMainPageMainPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiPortfolioItemPortfolioItem
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'portfolio_items';
+  info: {
+    displayName: 'Portfolio Item';
+    pluralName: 'portfolio-items';
+    singularName: 'portfolio-item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio-item.portfolio-item'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    purpose: Schema.Attribute.Relation<'manyToOne', 'api::purpose.purpose'>;
+    shape: Schema.Attribute.Relation<'manyToOne', 'api::shape.shape'>;
+    src: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    type: Schema.Attribute.Relation<'manyToOne', 'api::type.type'>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPortfolioPortfolio extends Struct.SingleTypeSchema {
+  collectionName: 'portfolios';
+  info: {
+    displayName: 'Portfolio';
+    pluralName: 'portfolios';
+    singularName: 'portfolio';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    FilterSection: Schema.Attribute.Component<'filter.filter-block', true>;
+    Grid: Schema.Attribute.Component<'ui.portfolio-item', true>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio.portfolio'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPurposePurpose extends Struct.CollectionTypeSchema {
+  collectionName: 'purposes';
+  info: {
+    displayName: 'Purpose';
+    pluralName: 'purposes';
+    singularName: 'purpose';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String & Schema.Attribute.Unique;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::purpose.purpose'
+    > &
+      Schema.Attribute.Private;
+    portfolioItems: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio-item.portfolio-item'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiShapeShape extends Struct.CollectionTypeSchema {
+  collectionName: 'shapes';
+  info: {
+    displayName: 'Shape';
+    pluralName: 'shapes';
+    singularName: 'shape';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::shape.shape'> &
+      Schema.Attribute.Private;
+    portfolioItems: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio-item.portfolio-item'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTypeType extends Struct.CollectionTypeSchema {
+  collectionName: 'types';
+  info: {
+    displayName: 'Type';
+    pluralName: 'types';
+    singularName: 'type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::type.type'> &
+      Schema.Attribute.Private;
+    portfolioItems: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::portfolio-item.portfolio-item'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface PluginContentReleasesRelease
   extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_releases';
@@ -977,6 +1133,11 @@ declare module '@strapi/strapi' {
       'api::construction.construction': ApiConstructionConstruction;
       'api::header-menu.header-menu': ApiHeaderMenuHeaderMenu;
       'api::main-page.main-page': ApiMainPageMainPage;
+      'api::portfolio-item.portfolio-item': ApiPortfolioItemPortfolioItem;
+      'api::portfolio.portfolio': ApiPortfolioPortfolio;
+      'api::purpose.purpose': ApiPurposePurpose;
+      'api::shape.shape': ApiShapeShape;
+      'api::type.type': ApiTypeType;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

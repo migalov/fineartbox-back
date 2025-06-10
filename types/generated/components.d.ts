@@ -1,5 +1,29 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface FilterFilterBlock extends Struct.ComponentSchema {
+  collectionName: 'components_filter_filter_blocks';
+  info: {
+    displayName: 'FilterBlock';
+    icon: 'plus';
+  };
+  attributes: {
+    category: Schema.Attribute.String;
+    options: Schema.Attribute.Component<'filter.option', true>;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface FilterOption extends Struct.ComponentSchema {
+  collectionName: 'components_filter_options';
+  info: {
+    displayName: 'Option';
+  };
+  attributes: {
+    label: Schema.Attribute.String;
+    slug: Schema.Attribute.String;
+  };
+}
+
 export interface GridsCardsList extends Struct.ComponentSchema {
   collectionName: 'components_grids_cards_lists';
   info: {
@@ -155,6 +179,25 @@ export interface UiListMenu extends Struct.ComponentSchema {
   };
 }
 
+export interface UiPortfolioItem extends Struct.ComponentSchema {
+  collectionName: 'components_ui_portfolio_items';
+  info: {
+    displayName: 'PortfolioItem';
+  };
+  attributes: {
+    backgroundColor: Schema.Attribute.String;
+    backgroundImage: Schema.Attribute.String;
+    description: Schema.Attribute.String;
+    desktopAspectRatio: Schema.Attribute.String;
+    desktopColumns: Schema.Attribute.Integer;
+    desktopRows: Schema.Attribute.Integer;
+    mobileAspectRatio: Schema.Attribute.String;
+    mobileColumns: Schema.Attribute.Integer;
+    mobileRows: Schema.Attribute.Integer;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface UiReadyProject extends Struct.ComponentSchema {
   collectionName: 'components_ui_ready_projects';
   info: {
@@ -170,6 +213,8 @@ export interface UiReadyProject extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'filter.filter-block': FilterFilterBlock;
+      'filter.option': FilterOption;
       'grids.cards-list': GridsCardsList;
       'grids.ready-projects': GridsReadyProjects;
       'grids.seo-block': GridsSeoBlock;
@@ -180,6 +225,7 @@ declare module '@strapi/strapi' {
       'ui.html-block': UiHtmlBlock;
       'ui.item-menu': UiItemMenu;
       'ui.list-menu': UiListMenu;
+      'ui.portfolio-item': UiPortfolioItem;
       'ui.ready-project': UiReadyProject;
     }
   }
