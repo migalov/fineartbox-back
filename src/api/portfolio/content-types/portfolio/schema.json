@@ -20,6 +20,11 @@
       "type": "component",
       "component": "ui.portfolio-item",
       "repeatable": true
+    },
+    "SEOBlock": {
+      "type": "component",
+      "component": "grids.seo-block",
+      "repeatable": false
     }
   }
 }
