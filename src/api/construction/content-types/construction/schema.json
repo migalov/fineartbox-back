@@ -11,11 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Slider": {
-      "type": "component",
-      "component": "slider.slide",
-      "repeatable": true
-    },
     "readyProjects": {
       "type": "component",
       "component": "grids.ready-projects",
@@ -36,6 +31,39 @@
       "type": "component",
       "component": "grids.cards-list",
       "repeatable": true
+    },
+    "SEO": {
+      "type": "component",
+      "component": "grids.seo-block",
+      "repeatable": false
+    },
+    "SVGSprite": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
+    },
+    "numTabs": {
+      "type": "integer"
+    },
+    "linksConstructions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::filter-construction.filter-construction"
+    },
+    "filterConstructions": {
+      "type": "component",
+      "component": "filter.option",
+      "repeatable": true
+    },
+    "announce": {
+      "type": "string"
+    },
+    "Banner": {
+      "type": "component",
+      "component": "slider.slide",
+      "repeatable": false
     }
   }
 }

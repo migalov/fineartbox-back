@@ -6,15 +6,15 @@
   },
   "options": {},
   "attributes": {
-    "title": {
-      "type": "string"
-    },
     "options": {
       "type": "component",
       "component": "filter.option",
       "repeatable": true
     },
     "category": {
+      "type": "string"
+    },
+    "title": {
       "type": "string"
     }
   },

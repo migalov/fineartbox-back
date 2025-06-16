@@ -385,22 +385,67 @@ export interface ApiConstructionConstruction
     draftAndPublish: true;
   };
   attributes: {
+    announce: Schema.Attribute.String;
+    Banner: Schema.Attribute.Component<'slider.slide', false>;
     cardsSection: Schema.Attribute.Component<'grids.cards-list', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     descriptions: Schema.Attribute.Component<'ui.html-block', true>;
+    filterConstructions: Schema.Attribute.Component<'filter.option', true>;
+    linksConstructions: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::filter-construction.filter-construction'
+    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::construction.construction'
     > &
       Schema.Attribute.Private;
+    numTabs: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
     readyProjects: Schema.Attribute.Component<'grids.ready-projects', false>;
-    Slider: Schema.Attribute.Component<'slider.slide', true>;
+    SEO: Schema.Attribute.Component<'grids.seo-block', false>;
     slug: Schema.Attribute.String;
+    SVGSprite: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiFilterConstructionFilterConstruction
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'filter_constructions';
+  info: {
+    displayName: 'FilterConstruction';
+    pluralName: 'filter-constructions';
+    singularName: 'filter-construction';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    href: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::filter-construction.filter-construction'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1132,6 +1177,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::construction.construction': ApiConstructionConstruction;
+      'api::filter-construction.filter-construction': ApiFilterConstructionFilterConstruction;
       'api::header-menu.header-menu': ApiHeaderMenuHeaderMenu;
       'api::main-page.main-page': ApiMainPageMainPage;
       'api::portfolio-item.portfolio-item': ApiPortfolioItemPortfolioItem;
