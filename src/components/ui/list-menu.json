@@ -20,6 +20,10 @@
     "line": {
       "type": "boolean",
       "default": false
+    },
+    "active": {
+      "type": "boolean",
+      "default": false
     }
   },
   "config": {}

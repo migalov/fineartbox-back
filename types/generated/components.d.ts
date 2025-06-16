@@ -160,6 +160,7 @@ export interface UiItemMenu extends Struct.ComponentSchema {
     icon: 'link';
   };
   attributes: {
+    active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     href: Schema.Attribute.String;
     label: Schema.Attribute.String;
   };
@@ -172,6 +173,7 @@ export interface UiListMenu extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
+    active: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     href: Schema.Attribute.String;
     itemsMenu: Schema.Attribute.Component<'ui.item-menu', true>;
     label: Schema.Attribute.String;

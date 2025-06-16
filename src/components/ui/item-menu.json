@@ -11,6 +11,10 @@
     },
     "href": {
       "type": "string"
+    },
+    "active": {
+      "type": "boolean",
+      "default": false
     }
   },
   "config": {}
