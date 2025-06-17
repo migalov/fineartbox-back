@@ -9,6 +9,7 @@ export interface FilterFilterBlock extends Struct.ComponentSchema {
   attributes: {
     category: Schema.Attribute.String;
     options: Schema.Attribute.Component<'filter.option', true>;
+    slug: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
 }
