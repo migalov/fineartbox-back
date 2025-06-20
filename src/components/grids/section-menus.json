@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_grids_section_menus",
+  "info": {
+    "displayName": "Section Menus"
+  },
+  "options": {},
+  "attributes": {
+    "listsMenus": {
+      "type": "component",
+      "component": "ui.list-menu",
+      "repeatable": true
+    },
+    "label": {
+      "type": "string"
+    },
+    "gridArea": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

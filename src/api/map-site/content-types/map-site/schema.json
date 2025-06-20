@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "map_sites",
+  "info": {
+    "singularName": "map-site",
+    "pluralName": "map-sites",
+    "displayName": "Map Site"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Content": {
+      "type": "component",
+      "component": "grids.section-menus",
+      "repeatable": true
+    }
+  }
+}

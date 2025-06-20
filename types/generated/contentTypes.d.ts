@@ -510,6 +510,34 @@ export interface ApiMainPageMainPage extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMapSiteMapSite extends Struct.SingleTypeSchema {
+  collectionName: 'map_sites';
+  info: {
+    displayName: 'Map Site';
+    pluralName: 'map-sites';
+    singularName: 'map-site';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Content: Schema.Attribute.Component<'grids.section-menus', true>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::map-site.map-site'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiPortfolioItemPortfolioItem
   extends Struct.CollectionTypeSchema {
   collectionName: 'portfolio_items';
@@ -1180,6 +1208,7 @@ declare module '@strapi/strapi' {
       'api::filter-construction.filter-construction': ApiFilterConstructionFilterConstruction;
       'api::header-menu.header-menu': ApiHeaderMenuHeaderMenu;
       'api::main-page.main-page': ApiMainPageMainPage;
+      'api::map-site.map-site': ApiMapSiteMapSite;
       'api::portfolio-item.portfolio-item': ApiPortfolioItemPortfolioItem;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::purpose.purpose': ApiPurposePurpose;

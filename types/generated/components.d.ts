@@ -48,6 +48,18 @@ export interface GridsReadyProjects extends Struct.ComponentSchema {
   };
 }
 
+export interface GridsSectionMenus extends Struct.ComponentSchema {
+  collectionName: 'components_grids_section_menus';
+  info: {
+    displayName: 'Section Menus';
+  };
+  attributes: {
+    gridArea: Schema.Attribute.String;
+    label: Schema.Attribute.String;
+    listsMenus: Schema.Attribute.Component<'ui.list-menu', true>;
+  };
+}
+
 export interface GridsSeoBlock extends Struct.ComponentSchema {
   collectionName: 'components_grids_seo_blocks';
   info: {
@@ -220,6 +232,7 @@ declare module '@strapi/strapi' {
       'filter.option': FilterOption;
       'grids.cards-list': GridsCardsList;
       'grids.ready-projects': GridsReadyProjects;
+      'grids.section-menus': GridsSectionMenus;
       'grids.seo-block': GridsSeoBlock;
       'slider.slide': SliderSlide;
       'ui.card': UiCard;
