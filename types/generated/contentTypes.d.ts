@@ -385,13 +385,13 @@ export interface ApiConstructionConstruction
     draftAndPublish: true;
   };
   attributes: {
-    announce: Schema.Attribute.String;
+    announces: Schema.Attribute.Component<'ui.announce', true>;
     Banner: Schema.Attribute.Component<'slider.slide', false>;
     cardsSection: Schema.Attribute.Component<'grids.cards-list', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    descriptions: Schema.Attribute.Component<'ui.html-block', true>;
+    descriptions: Schema.Attribute.Component<'ui.html-block', false>;
     filterConstructions: Schema.Attribute.Component<'filter.option', true>;
     linksConstructions: Schema.Attribute.Relation<
       'oneToMany',
@@ -405,7 +405,7 @@ export interface ApiConstructionConstruction
       Schema.Attribute.Private;
     numTabs: Schema.Attribute.Integer;
     publishedAt: Schema.Attribute.DateTime;
-    readyProjects: Schema.Attribute.Component<'grids.ready-projects', false>;
+    readyProjects: Schema.Attribute.Component<'grids.ready-projects', true>;
     SEO: Schema.Attribute.Component<'grids.seo-block', false>;
     slug: Schema.Attribute.String;
     SVGSprite: Schema.Attribute.RichText &

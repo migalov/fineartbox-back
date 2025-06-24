@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_ui_announces",
+  "info": {
+    "displayName": "Announce",
+    "icon": "check"
+  },
+  "options": {},
+  "attributes": {
+    "text": {
+      "type": "string"
+    },
+    "anchor": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -15,6 +15,9 @@
     },
     "gridArea": {
       "type": "string"
+    },
+    "href": {
+      "type": "string"
     }
   },
   "config": {}

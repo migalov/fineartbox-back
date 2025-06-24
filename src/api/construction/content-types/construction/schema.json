@@ -14,12 +14,12 @@
     "readyProjects": {
       "type": "component",
       "component": "grids.ready-projects",
-      "repeatable": false
+      "repeatable": true
     },
     "descriptions": {
       "type": "component",
       "component": "ui.html-block",
-      "repeatable": true
+      "repeatable": false
     },
     "title": {
       "type": "string"
@@ -57,13 +57,15 @@
       "component": "filter.option",
       "repeatable": true
     },
-    "announce": {
-      "type": "string"
-    },
     "Banner": {
       "type": "component",
       "component": "slider.slide",
       "repeatable": false
+    },
+    "announces": {
+      "type": "component",
+      "component": "ui.announce",
+      "repeatable": true
     }
   }
 }

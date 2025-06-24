@@ -13,6 +13,9 @@
       "type": "component",
       "component": "ui.ready-project",
       "repeatable": true
+    },
+    "anchor": {
+      "type": "string"
     }
   },
   "config": {}

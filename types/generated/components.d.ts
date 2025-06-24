@@ -43,6 +43,7 @@ export interface GridsReadyProjects extends Struct.ComponentSchema {
     icon: 'apps';
   };
   attributes: {
+    anchor: Schema.Attribute.String;
     projectsList: Schema.Attribute.Component<'ui.ready-project', true>;
     title: Schema.Attribute.String;
   };
@@ -55,6 +56,7 @@ export interface GridsSectionMenus extends Struct.ComponentSchema {
   };
   attributes: {
     gridArea: Schema.Attribute.String;
+    href: Schema.Attribute.String;
     label: Schema.Attribute.String;
     listsMenus: Schema.Attribute.Component<'ui.list-menu', true>;
   };
@@ -101,6 +103,18 @@ export interface SliderSlide extends Struct.ComponentSchema {
         }
       >;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface UiAnnounce extends Struct.ComponentSchema {
+  collectionName: 'components_ui_announces';
+  info: {
+    displayName: 'Announce';
+    icon: 'check';
+  };
+  attributes: {
+    anchor: Schema.Attribute.String;
+    text: Schema.Attribute.String;
   };
 }
 
@@ -155,6 +169,7 @@ export interface UiHtmlBlock extends Struct.ComponentSchema {
     icon: 'code';
   };
   attributes: {
+    anchor: Schema.Attribute.String;
     htmlContent: Schema.Attribute.RichText &
       Schema.Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
@@ -235,6 +250,7 @@ declare module '@strapi/strapi' {
       'grids.section-menus': GridsSectionMenus;
       'grids.seo-block': GridsSeoBlock;
       'slider.slide': SliderSlide;
+      'ui.announce': UiAnnounce;
       'ui.card': UiCard;
       'ui.faq-item': UiFaqItem;
       'ui.faq-list': UiFaqList;
