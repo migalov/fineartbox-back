@@ -385,27 +385,36 @@ export interface ApiConstructionConstruction
     draftAndPublish: true;
   };
   attributes: {
-    announces: Schema.Attribute.Component<'ui.announce', true>;
+    announce: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     Banner: Schema.Attribute.Component<'slider.slide', false>;
     cardsSection: Schema.Attribute.Component<'grids.cards-list', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    descriptions: Schema.Attribute.Component<'ui.html-block', false>;
-    filterConstructions: Schema.Attribute.Component<'filter.option', true>;
-    linksConstructions: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::filter-construction.filter-construction'
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::construction.construction'
     > &
       Schema.Attribute.Private;
-    numTabs: Schema.Attribute.Integer;
+    packageTypes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::package-type.package-type'
+    >;
+    processDescription: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     publishedAt: Schema.Attribute.DateTime;
-    readyProjects: Schema.Attribute.Component<'grids.ready-projects', true>;
     SEO: Schema.Attribute.Component<'grids.seo-block', false>;
     slug: Schema.Attribute.String;
     SVGSprite: Schema.Attribute.RichText &
@@ -532,6 +541,142 @@ export interface ApiMapSiteMapSite extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPackageAppointmentPackageAppointment
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'package_appointments';
+  info: {
+    displayName: 'Package Appointment';
+    pluralName: 'package-appointments';
+    singularName: 'package-appointment';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::package-appointment.package-appointment'
+    > &
+      Schema.Attribute.Private;
+    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPackageFormPackageForm extends Struct.CollectionTypeSchema {
+  collectionName: 'package_forms';
+  info: {
+    displayName: 'Package Form';
+    pluralName: 'package-forms';
+    singularName: 'package-form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::package-form.package-form'
+    > &
+      Schema.Attribute.Private;
+    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPackageTypePackageType extends Struct.CollectionTypeSchema {
+  collectionName: 'package_types';
+  info: {
+    displayName: 'Package Type';
+    pluralName: 'package-types';
+    singularName: 'package-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::package-type.package-type'
+    > &
+      Schema.Attribute.Private;
+    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
+  collectionName: 'packages';
+  info: {
+    displayName: 'Package';
+    pluralName: 'packages';
+    singularName: 'package';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    appointment: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::package-appointment.package-appointment'
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    image: Schema.Attribute.Media<'images'>;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::package.package'
+    > &
+      Schema.Attribute.Private;
+    packageForm: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::package-form.package-form'
+    >;
+    packageType: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::package-type.package-type'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    srcAlternative: Schema.Attribute.String;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1209,6 +1354,10 @@ declare module '@strapi/strapi' {
       'api::header-menu.header-menu': ApiHeaderMenuHeaderMenu;
       'api::main-page.main-page': ApiMainPageMainPage;
       'api::map-site.map-site': ApiMapSiteMapSite;
+      'api::package-appointment.package-appointment': ApiPackageAppointmentPackageAppointment;
+      'api::package-form.package-form': ApiPackageFormPackageForm;
+      'api::package-type.package-type': ApiPackageTypePackageType;
+      'api::package.package': ApiPackagePackage;
       'api::portfolio-item.portfolio-item': ApiPortfolioItemPortfolioItem;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'api::purpose.purpose': ApiPurposePurpose;

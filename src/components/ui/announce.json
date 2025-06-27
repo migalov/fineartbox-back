@@ -8,9 +8,6 @@
   "attributes": {
     "text": {
       "type": "string"
-    },
-    "anchor": {
-      "type": "string"
     }
   },
   "config": {}

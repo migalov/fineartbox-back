@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "package_types",
+  "info": {
+    "singularName": "package-type",
+    "pluralName": "package-types",
+    "displayName": "Package Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::package.package",
+      "mappedBy": "packageType"
+    },
+    "description": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
+    }
+  }
+}

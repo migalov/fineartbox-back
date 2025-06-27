@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "packages",
+  "info": {
+    "singularName": "package",
+    "pluralName": "packages",
+    "displayName": "Package"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "srcAlternative": {
+      "type": "string"
+    },
+    "appointment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::package-appointment.package-appointment",
+      "inversedBy": "packages"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "packageType": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::package-type.package-type",
+      "inversedBy": "packages"
+    },
+    "packageForm": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::package-form.package-form",
+      "inversedBy": "packages"
+    }
+  }
+}

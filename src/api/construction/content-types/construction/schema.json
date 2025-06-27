@@ -11,21 +11,18 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "readyProjects": {
-      "type": "component",
-      "component": "grids.ready-projects",
-      "repeatable": true
-    },
-    "descriptions": {
-      "type": "component",
-      "component": "ui.html-block",
-      "repeatable": false
-    },
     "title": {
       "type": "string"
     },
     "slug": {
       "type": "string"
+    },
+    "announce": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
     },
     "cardsSection": {
       "type": "component",
@@ -44,28 +41,22 @@
         "preset": "defaultHtml"
       }
     },
-    "numTabs": {
-      "type": "integer"
-    },
-    "linksConstructions": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::filter-construction.filter-construction"
-    },
-    "filterConstructions": {
-      "type": "component",
-      "component": "filter.option",
-      "repeatable": true
-    },
     "Banner": {
       "type": "component",
       "component": "slider.slide",
       "repeatable": false
     },
-    "announces": {
-      "type": "component",
-      "component": "ui.announce",
-      "repeatable": true
+    "packageTypes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::package-type.package-type"
+    },
+    "processDescription": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
     }
   }
 }

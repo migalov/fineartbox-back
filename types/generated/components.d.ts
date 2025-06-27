@@ -20,6 +20,13 @@ export interface FilterOption extends Struct.ComponentSchema {
     displayName: 'Option';
   };
   attributes: {
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     label: Schema.Attribute.String;
     slug: Schema.Attribute.String;
   };
@@ -113,7 +120,6 @@ export interface UiAnnounce extends Struct.ComponentSchema {
     icon: 'check';
   };
   attributes: {
-    anchor: Schema.Attribute.String;
     text: Schema.Attribute.String;
   };
 }

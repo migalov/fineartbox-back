@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "package_appointments",
+  "info": {
+    "singularName": "package-appointment",
+    "pluralName": "package-appointments",
+    "displayName": "Package Appointment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::package.package",
+      "mappedBy": "appointment"
+    }
+  }
+}
