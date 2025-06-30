@@ -183,6 +183,7 @@ export interface UiHtmlBlock extends Struct.ComponentSchema {
           preset: 'defaultHtml';
         }
       >;
+    subtitle: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };
 }

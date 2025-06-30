@@ -18,6 +18,9 @@
     },
     "anchor": {
       "type": "string"
+    },
+    "subtitle": {
+      "type": "string"
     }
   },
   "config": {}
