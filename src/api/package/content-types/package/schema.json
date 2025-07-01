@@ -17,12 +17,6 @@
     "srcAlternative": {
       "type": "string"
     },
-    "appointment": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::package-appointment.package-appointment",
-      "inversedBy": "packages"
-    },
     "image": {
       "type": "media",
       "multiple": false,
@@ -40,6 +34,15 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::package-form.package-form",
+      "inversedBy": "packages"
+    },
+    "href": {
+      "type": "string"
+    },
+    "packageAppointment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::package-appointment.package-appointment",
       "inversedBy": "packages"
     }
   }

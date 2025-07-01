@@ -11,11 +11,14 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "title": {
+      "type": "string"
+    },
     "packages": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::package.package",
-      "mappedBy": "appointment"
+      "mappedBy": "packageAppointment"
     }
   }
 }

@@ -23,6 +23,20 @@
     },
     "backgroundMobile": {
       "type": "string"
+    },
+    "imageDesktop": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "imageMobile": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
     }
   },
   "config": {}

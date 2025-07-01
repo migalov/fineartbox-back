@@ -109,6 +109,8 @@ export interface SliderSlide extends Struct.ComponentSchema {
           preset: 'defaultHtml';
         }
       >;
+    imageDesktop: Schema.Attribute.Media<'images'>;
+    imageMobile: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
   };
 }
@@ -133,6 +135,7 @@ export interface UiCard extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.String;
     href: Schema.Attribute.String;
+    image: Schema.Attribute.Media<'images'>;
     src: Schema.Attribute.String;
     title: Schema.Attribute.String;
   };

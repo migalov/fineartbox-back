@@ -598,6 +598,7 @@ export interface ApiPackageAppointmentPackageAppointment
       Schema.Attribute.Private;
     packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
     publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -680,13 +681,10 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    appointment: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::package-appointment.package-appointment'
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    href: Schema.Attribute.String;
     image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -694,6 +692,10 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
       'api::package.package'
     > &
       Schema.Attribute.Private;
+    packageAppointment: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::package-appointment.package-appointment'
+    >;
     packageForm: Schema.Attribute.Relation<
       'manyToOne',
       'api::package-form.package-form'
