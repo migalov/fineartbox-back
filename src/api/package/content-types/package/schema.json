@@ -15,7 +15,8 @@
       "type": "string"
     },
     "srcAlternative": {
-      "type": "string"
+      "type": "string",
+      "unique": false
     },
     "image": {
       "type": "media",
@@ -24,9 +25,9 @@
         "images"
       ]
     },
-    "packageType": {
+    "package_types": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::package-type.package-type",
       "inversedBy": "packages"
     },
@@ -37,7 +38,8 @@
       "inversedBy": "packages"
     },
     "href": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "packageAppointment": {
       "type": "relation",

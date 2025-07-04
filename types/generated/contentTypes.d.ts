@@ -392,7 +392,7 @@ export interface ApiConstructionConstruction
           preset: 'defaultHtml';
         }
       >;
-    Banner: Schema.Attribute.Component<'slider.slide', false>;
+    announceMaxWidth: Schema.Attribute.String;
     cardsSection: Schema.Attribute.Component<'grids.cards-list', true>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -407,13 +407,6 @@ export interface ApiConstructionConstruction
       'oneToMany',
       'api::package-type.package-type'
     >;
-    processDescription: Schema.Attribute.RichText &
-      Schema.Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'defaultHtml';
-        }
-      >;
     publishedAt: Schema.Attribute.DateTime;
     SEO: Schema.Attribute.Component<'grids.seo-block', false>;
     slug: Schema.Attribute.String;
@@ -648,7 +641,14 @@ export interface ApiPackageTypePackageType extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    description: Schema.Attribute.RichText &
+    descriptionProcess: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    descriptionTypePackage: Schema.Attribute.RichText &
       Schema.Attribute.CustomField<
         'plugin::ckeditor5.CKEditor',
         {
@@ -661,8 +661,9 @@ export interface ApiPackageTypePackageType extends Struct.CollectionTypeSchema {
       'api::package-type.package-type'
     > &
       Schema.Attribute.Private;
-    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    packages: Schema.Attribute.Relation<'manyToMany', 'api::package.package'>;
     publishedAt: Schema.Attribute.DateTime;
+    slide: Schema.Attribute.Component<'slider.slide', false>;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -684,7 +685,7 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    href: Schema.Attribute.String;
+    href: Schema.Attribute.String & Schema.Attribute.Unique;
     image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -692,6 +693,10 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
       'api::package.package'
     > &
       Schema.Attribute.Private;
+    package_types: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::package-type.package-type'
+    >;
     packageAppointment: Schema.Attribute.Relation<
       'manyToOne',
       'api::package-appointment.package-appointment'
@@ -699,10 +704,6 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
     packageForm: Schema.Attribute.Relation<
       'manyToOne',
       'api::package-form.package-form'
-    >;
-    packageType: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::package-type.package-type'
     >;
     publishedAt: Schema.Attribute.DateTime;
     srcAlternative: Schema.Attribute.String;

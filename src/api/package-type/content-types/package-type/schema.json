@@ -16,16 +16,28 @@
     },
     "packages": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::package.package",
-      "mappedBy": "packageType"
+      "mappedBy": "package_types"
     },
-    "description": {
+    "descriptionTypePackage": {
       "type": "customField",
       "customField": "plugin::ckeditor5.CKEditor",
       "options": {
         "preset": "defaultHtml"
       }
+    },
+    "descriptionProcess": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
+    },
+    "slide": {
+      "type": "component",
+      "component": "slider.slide",
+      "repeatable": false
     }
   }
 }

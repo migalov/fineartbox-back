@@ -41,22 +41,13 @@
         "preset": "defaultHtml"
       }
     },
-    "Banner": {
-      "type": "component",
-      "component": "slider.slide",
-      "repeatable": false
-    },
     "packageTypes": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::package-type.package-type"
     },
-    "processDescription": {
-      "type": "customField",
-      "customField": "plugin::ckeditor5.CKEditor",
-      "options": {
-        "preset": "defaultHtml"
-      }
+    "announceMaxWidth": {
+      "type": "string"
     }
   }
 }
