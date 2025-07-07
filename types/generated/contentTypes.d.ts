@@ -663,7 +663,9 @@ export interface ApiPackageTypePackageType extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private;
     packages: Schema.Attribute.Relation<'manyToMany', 'api::package.package'>;
     publishedAt: Schema.Attribute.DateTime;
+    SEO: Schema.Attribute.Component<'grids.seo-block', false>;
     slide: Schema.Attribute.Component<'slider.slide', false>;
+    tag: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
