@@ -510,6 +510,33 @@ export interface ApiHeaderMenuHeaderMenu extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiLandingPageLandingPage extends Struct.CollectionTypeSchema {
+  collectionName: 'landing_pages';
+  info: {
+    displayName: 'Landing Page';
+    pluralName: 'landing-pages';
+    singularName: 'landing-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::landing-page.landing-page'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiMainPageMainPage extends Struct.SingleTypeSchema {
   collectionName: 'main_pages';
   info: {
@@ -1386,6 +1413,7 @@ declare module '@strapi/strapi' {
       'api::dictionary.dictionary': ApiDictionaryDictionary;
       'api::filter-construction.filter-construction': ApiFilterConstructionFilterConstruction;
       'api::header-menu.header-menu': ApiHeaderMenuHeaderMenu;
+      'api::landing-page.landing-page': ApiLandingPageLandingPage;
       'api::main-page.main-page': ApiMainPageMainPage;
       'api::map-site.map-site': ApiMapSiteMapSite;
       'api::package-appointment.package-appointment': ApiPackageAppointmentPackageAppointment;
