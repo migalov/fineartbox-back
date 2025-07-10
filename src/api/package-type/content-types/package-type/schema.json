@@ -40,7 +40,8 @@
       "repeatable": false
     },
     "tag": {
-      "type": "string"
+      "type": "string",
+      "unique": true
     },
     "SEO": {
       "type": "component",

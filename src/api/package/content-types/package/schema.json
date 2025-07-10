@@ -31,7 +31,7 @@
       "target": "api::package-type.package-type",
       "inversedBy": "packages"
     },
-    "packageForm": {
+    "package_form": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::package-form.package-form",
@@ -41,7 +41,7 @@
       "type": "string",
       "unique": true
     },
-    "packageAppointment": {
+    "package_appointment": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::package-appointment.package-appointment",

@@ -18,7 +18,10 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::package.package",
-      "mappedBy": "packageAppointment"
+      "mappedBy": "package_appointment"
+    },
+    "tag": {
+      "type": "string"
     }
   }
 }
