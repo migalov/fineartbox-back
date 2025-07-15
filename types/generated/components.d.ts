@@ -101,6 +101,11 @@ export interface SliderSlide extends Struct.ComponentSchema {
   attributes: {
     backgoundDesktop: Schema.Attribute.String;
     backgroundMobile: Schema.Attribute.String;
+    backgroundPosition: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 9;
+      }>;
+    backgroundSize: Schema.Attribute.Integer;
     description: Schema.Attribute.String;
     htmlContent: Schema.Attribute.RichText &
       Schema.Attribute.CustomField<

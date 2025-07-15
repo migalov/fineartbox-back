@@ -37,6 +37,13 @@
       "allowedTypes": [
         "images"
       ]
+    },
+    "backgroundSize": {
+      "type": "integer"
+    },
+    "backgroundPosition": {
+      "type": "string",
+      "maxLength": 9
     }
   },
   "config": {}
