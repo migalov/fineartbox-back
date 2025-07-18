@@ -424,6 +424,47 @@ export interface ApiConstructionConstruction
   };
 }
 
+export interface ApiCustomPageCustomPage extends Struct.CollectionTypeSchema {
+  collectionName: 'custom_pages';
+  info: {
+    displayName: 'Custom Page';
+    pluralName: 'custom-pages';
+    singularName: 'custom-page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Content: Schema.Attribute.DynamicZone<
+      [
+        'ui.html-block',
+        'slider.slide',
+        'grids.seo-block',
+        'ui.ready-project',
+        'ui.announce',
+        'grids.cards-list',
+      ]
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::custom-page.custom-page'
+    > &
+      Schema.Attribute.Private;
+    packagesOne: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    packagesTwo: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    publishedAt: Schema.Attribute.DateTime;
+    slug: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiDictionaryDictionary extends Struct.SingleTypeSchema {
   collectionName: 'dictionaries';
   info: {
@@ -1258,6 +1299,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::construction.construction': ApiConstructionConstruction;
+      'api::custom-page.custom-page': ApiCustomPageCustomPage;
       'api::dictionary.dictionary': ApiDictionaryDictionary;
       'api::filter-construction.filter-construction': ApiFilterConstructionFilterConstruction;
       'api::header-menu.header-menu': ApiHeaderMenuHeaderMenu;

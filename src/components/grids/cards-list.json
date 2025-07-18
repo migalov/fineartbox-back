@@ -12,6 +12,12 @@
       "type": "component",
       "component": "ui.card",
       "repeatable": true
+    },
+    "columns": {
+      "type": "integer"
+    },
+    "mobileScrollbar": {
+      "type": "boolean"
     }
   },
   "config": {}

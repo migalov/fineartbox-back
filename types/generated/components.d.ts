@@ -39,6 +39,8 @@ export interface GridsCardsList extends Struct.ComponentSchema {
   };
   attributes: {
     cardsList: Schema.Attribute.Component<'ui.card', true>;
+    columns: Schema.Attribute.Integer;
+    mobileScrollbar: Schema.Attribute.Boolean;
     title: Schema.Attribute.String;
   };
 }

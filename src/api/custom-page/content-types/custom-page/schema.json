@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "custom_pages",
+  "info": {
+    "singularName": "custom-page",
+    "pluralName": "custom-pages",
+    "displayName": "Custom Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "slug": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "dynamiczone",
+      "components": [
+        "ui.html-block",
+        "slider.slide",
+        "grids.seo-block",
+        "ui.ready-project",
+        "ui.announce",
+        "grids.cards-list"
+      ]
+    },
+    "packagesOne": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::package.package"
+    },
+    "packagesTwo": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::package.package"
+    }
+  }
+}
