@@ -37,6 +37,11 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::package.package"
+    },
+    "SEOBlock": {
+      "type": "component",
+      "component": "grids.seo-block",
+      "repeatable": false
     }
   }
 }

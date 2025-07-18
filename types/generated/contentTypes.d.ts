@@ -457,6 +457,7 @@ export interface ApiCustomPageCustomPage extends Struct.CollectionTypeSchema {
     packagesOne: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
     packagesTwo: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
     publishedAt: Schema.Attribute.DateTime;
+    SEOBlock: Schema.Attribute.Component<'grids.seo-block', false>;
     slug: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
