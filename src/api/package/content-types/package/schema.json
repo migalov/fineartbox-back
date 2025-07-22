@@ -46,6 +46,21 @@
       "relation": "manyToOne",
       "target": "api::package-appointment.package-appointment",
       "inversedBy": "packages"
+    },
+    "description": {
+      "type": "component",
+      "component": "grids.seo-block",
+      "repeatable": false
+    },
+    "packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::package.package"
+    },
+    "SEOBlock": {
+      "type": "component",
+      "component": "grids.seo-block",
+      "repeatable": false
     }
   }
 }

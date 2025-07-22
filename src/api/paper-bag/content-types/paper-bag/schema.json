@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "paper_bags",
+  "info": {
+    "singularName": "paper-bag",
+    "pluralName": "paper-bags",
+    "displayName": "Paper Bag"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "href": {
+      "type": "string"
+    }
+  }
+}

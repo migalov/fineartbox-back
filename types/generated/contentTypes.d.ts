@@ -731,6 +731,7 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    description: Schema.Attribute.Component<'grids.seo-block', false>;
     href: Schema.Attribute.String & Schema.Attribute.Unique;
     image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -751,8 +752,39 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
       'manyToMany',
       'api::package-type.package-type'
     >;
+    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
     publishedAt: Schema.Attribute.DateTime;
+    SEOBlock: Schema.Attribute.Component<'grids.seo-block', false>;
     srcAlternative: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPaperBagPaperBag extends Struct.CollectionTypeSchema {
+  collectionName: 'paper_bags';
+  info: {
+    displayName: 'Paper Bag';
+    pluralName: 'paper-bags';
+    singularName: 'paper-bag';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    href: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::paper-bag.paper-bag'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -1310,6 +1342,7 @@ declare module '@strapi/strapi' {
       'api::package-form.package-form': ApiPackageFormPackageForm;
       'api::package-type.package-type': ApiPackageTypePackageType;
       'api::package.package': ApiPackagePackage;
+      'api::paper-bag.paper-bag': ApiPaperBagPaperBag;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
