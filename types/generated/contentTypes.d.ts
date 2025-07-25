@@ -728,10 +728,18 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    aboutDrawing: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Component<'grids.seo-block', false>;
+    drawing: Schema.Attribute.Media<'images'>;
     href: Schema.Attribute.String & Schema.Attribute.Unique;
     image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -753,8 +761,10 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
       'api::package-type.package-type'
     >;
     packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    previews: Schema.Attribute.Media<'images', true>;
     publishedAt: Schema.Attribute.DateTime;
     SEOBlock: Schema.Attribute.Component<'grids.seo-block', false>;
+    slug: Schema.Attribute.String;
     srcAlternative: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
