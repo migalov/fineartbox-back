@@ -14,7 +14,13 @@
     "title": {
       "type": "string"
     },
-    "href": {
+    "packages": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::package.package",
+      "mappedBy": "paperBags"
+    },
+    "tag": {
       "type": "string"
     }
   }

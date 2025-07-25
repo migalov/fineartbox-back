@@ -761,10 +761,13 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
       'api::package-type.package-type'
     >;
     packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    paperBags: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::paper-bag.paper-bag'
+    >;
     previews: Schema.Attribute.Media<'images', true>;
     publishedAt: Schema.Attribute.DateTime;
     SEOBlock: Schema.Attribute.Component<'grids.seo-block', false>;
-    slug: Schema.Attribute.String;
     srcAlternative: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
@@ -787,14 +790,15 @@ export interface ApiPaperBagPaperBag extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    href: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
       'api::paper-bag.paper-bag'
     > &
       Schema.Attribute.Private;
+    packages: Schema.Attribute.Relation<'manyToMany', 'api::package.package'>;
     publishedAt: Schema.Attribute.DateTime;
+    tag: Schema.Attribute.String;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

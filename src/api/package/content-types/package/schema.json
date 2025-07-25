@@ -83,8 +83,11 @@
         "images"
       ]
     },
-    "slug": {
-      "type": "string"
+    "paperBags": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::paper-bag.paper-bag",
+      "inversedBy": "packages"
     }
   }
 }
