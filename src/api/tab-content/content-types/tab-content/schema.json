@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tab_contents",
+  "info": {
+    "singularName": "tab-content",
+    "pluralName": "tab-contents",
+    "displayName": "Tab Content"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "tabCardItems": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tab-card-item.tab-card-item",
+      "mappedBy": "tabContents"
+    },
+    "availableFoil": {
+      "type": "boolean"
+    },
+    "srcFoil": {
+      "type": "string"
+    },
+    "tabSections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tab-section.tab-section",
+      "inversedBy": "tabContents"
+    }
+  }
+}

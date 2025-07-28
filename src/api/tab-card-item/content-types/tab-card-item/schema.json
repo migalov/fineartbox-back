@@ -1,0 +1,60 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tab_card_items",
+  "info": {
+    "singularName": "tab-card-item",
+    "pluralName": "tab-card-items",
+    "displayName": "Tab Card Item"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "srcAlternative": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "!=": [
+            {
+              "var": "availableFoil"
+            },
+            true
+          ]
+        }
+      }
+    },
+    "description": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
+    },
+    "tabContents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tab-content.tab-content",
+      "inversedBy": "tabCardItems"
+    },
+    "availableFoil": {
+      "type": "boolean"
+    },
+    "srcFoil": {
+      "type": "string",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "availableFoil"
+            },
+            true
+          ]
+        }
+      }
+    }
+  }
+}

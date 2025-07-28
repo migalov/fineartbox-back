@@ -459,6 +459,10 @@ export interface ApiCustomPageCustomPage extends Struct.CollectionTypeSchema {
     publishedAt: Schema.Attribute.DateTime;
     SEOBlock: Schema.Attribute.Component<'grids.seo-block', false>;
     slug: Schema.Attribute.String;
+    tabsSections: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tab-section.tab-section'
+    >;
     title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -830,6 +834,143 @@ export interface ApiPortfolioPortfolio extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     SEOBlock: Schema.Attribute.Component<'grids.seo-block', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTabCardItemTabCardItem extends Struct.CollectionTypeSchema {
+  collectionName: 'tab_card_items';
+  info: {
+    displayName: 'Tab Card Item';
+    pluralName: 'tab-card-items';
+    singularName: 'tab-card-item';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    availableFoil: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tab-card-item.tab-card-item'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    srcAlternative: Schema.Attribute.String;
+    srcFoil: Schema.Attribute.String;
+    tabContents: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::tab-content.tab-content'
+    >;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTabContentTabContent extends Struct.CollectionTypeSchema {
+  collectionName: 'tab_contents';
+  info: {
+    displayName: 'Tab Content';
+    pluralName: 'tab-contents';
+    singularName: 'tab-content';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    availableFoil: Schema.Attribute.Boolean;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    label: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tab-content.tab-content'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    srcFoil: Schema.Attribute.String;
+    tabCardItems: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::tab-card-item.tab-card-item'
+    >;
+    tabSections: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::tab-section.tab-section'
+    >;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiTabSectionTabSection extends Struct.CollectionTypeSchema {
+  collectionName: 'tab_sections';
+  info: {
+    displayName: 'Tab Section';
+    pluralName: 'tab-sections';
+    singularName: 'tab-section';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    anchor: Schema.Attribute.String;
+    announce: Schema.Attribute.Text;
+    banner: Schema.Attribute.Component<'slider.slide', false>;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    customPage: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::custom-page.custom-page'
+    >;
+    descriptionProcess: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    descriptionType: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor5.CKEditor',
+        {
+          preset: 'defaultHtml';
+        }
+      >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::tab-section.tab-section'
+    > &
+      Schema.Attribute.Private;
+    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    previewTab: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    SEOBlock: Schema.Attribute.Component<'grids.seo-block', false>;
+    tabContents: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::tab-content.tab-content'
+    >;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1358,6 +1499,9 @@ declare module '@strapi/strapi' {
       'api::package.package': ApiPackagePackage;
       'api::paper-bag.paper-bag': ApiPaperBagPaperBag;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
+      'api::tab-card-item.tab-card-item': ApiTabCardItemTabCardItem;
+      'api::tab-content.tab-content': ApiTabContentTabContent;
+      'api::tab-section.tab-section': ApiTabSectionTabSection;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;

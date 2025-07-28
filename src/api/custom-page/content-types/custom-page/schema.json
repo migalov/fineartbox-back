@@ -17,6 +17,12 @@
     "slug": {
       "type": "string"
     },
+    "tabsSections": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tab-section.tab-section",
+      "mappedBy": "customPage"
+    },
     "Content": {
       "type": "dynamiczone",
       "components": [

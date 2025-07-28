@@ -1,0 +1,68 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tab_sections",
+  "info": {
+    "singularName": "tab-section",
+    "pluralName": "tab-sections",
+    "displayName": "Tab Section"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "anchor": {
+      "type": "string"
+    },
+    "previewTab": {
+      "type": "string"
+    },
+    "banner": {
+      "type": "component",
+      "component": "slider.slide",
+      "repeatable": false
+    },
+    "announce": {
+      "type": "text"
+    },
+    "packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::package.package"
+    },
+    "descriptionType": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
+    },
+    "descriptionProcess": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultHtml"
+      }
+    },
+    "tabContents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tab-content.tab-content",
+      "mappedBy": "tabSections"
+    },
+    "SEOBlock": {
+      "type": "component",
+      "component": "grids.seo-block",
+      "repeatable": false
+    },
+    "customPage": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::custom-page.custom-page",
+      "inversedBy": "tabsSections"
+    }
+  }
+}
