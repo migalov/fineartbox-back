@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_slider_previews_array_list_sources",
+  "info": {
+    "displayName": "PreviewsArrayListSource",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "SourceImage": {
+      "type": "component",
+      "component": "slider.source-image",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

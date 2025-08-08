@@ -95,6 +95,17 @@ export interface GridsSeoBlock extends Struct.ComponentSchema {
   };
 }
 
+export interface SliderPreviewsArrayListSource extends Struct.ComponentSchema {
+  collectionName: 'components_slider_previews_array_list_sources';
+  info: {
+    displayName: 'PreviewsArrayListSource';
+    icon: 'bulletList';
+  };
+  attributes: {
+    SourceImage: Schema.Attribute.Component<'slider.source-image', true>;
+  };
+}
+
 export interface SliderSlide extends Struct.ComponentSchema {
   collectionName: 'components_slider_slides';
   info: {
@@ -119,6 +130,17 @@ export interface SliderSlide extends Struct.ComponentSchema {
     imageDesktop: Schema.Attribute.Media<'images'>;
     imageMobile: Schema.Attribute.Media<'images'>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface SliderSourceImage extends Struct.ComponentSchema {
+  collectionName: 'components_slider_source_images';
+  info: {
+    displayName: 'SourceImage';
+    icon: 'bulletList';
+  };
+  attributes: {
+    src: Schema.Attribute.String;
   };
 }
 
@@ -266,7 +288,9 @@ declare module '@strapi/strapi' {
       'grids.ready-projects': GridsReadyProjects;
       'grids.section-menus': GridsSectionMenus;
       'grids.seo-block': GridsSeoBlock;
+      'slider.previews-array-list-source': SliderPreviewsArrayListSource;
       'slider.slide': SliderSlide;
+      'slider.source-image': SliderSourceImage;
       'ui.announce': UiAnnounce;
       'ui.card': UiCard;
       'ui.faq-item': UiFaqItem;

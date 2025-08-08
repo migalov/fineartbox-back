@@ -88,6 +88,11 @@
       "relation": "manyToMany",
       "target": "api::paper-bag.paper-bag",
       "inversedBy": "packages"
+    },
+    "PreviewSourceImageArray": {
+      "type": "component",
+      "component": "slider.source-image",
+      "repeatable": true
     }
   }
 }

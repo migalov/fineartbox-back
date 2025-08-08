@@ -1,0 +1,14 @@
+{
+  "collectionName": "components_slider_source_images",
+  "info": {
+    "displayName": "SourceImage",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "src": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -770,6 +770,10 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
       'api::paper-bag.paper-bag'
     >;
     previews: Schema.Attribute.Media<'images', true>;
+    PreviewSourceImageArray: Schema.Attribute.Component<
+      'slider.source-image',
+      true
+    >;
     publishedAt: Schema.Attribute.DateTime;
     SEOBlock: Schema.Attribute.Component<'grids.seo-block', false>;
     srcAlternative: Schema.Attribute.String;
