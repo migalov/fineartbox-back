@@ -47,6 +47,9 @@
       "type": "component",
       "component": "grids.seo-block",
       "repeatable": false
+    },
+    "drawing": {
+      "type": "string"
     }
   }
 }

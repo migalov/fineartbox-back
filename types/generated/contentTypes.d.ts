@@ -703,6 +703,7 @@ export interface ApiPackageTypePackageType extends Struct.CollectionTypeSchema {
           preset: 'defaultHtml';
         }
       >;
+    drawing: Schema.Attribute.String;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
