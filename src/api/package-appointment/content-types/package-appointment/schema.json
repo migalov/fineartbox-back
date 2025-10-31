@@ -22,6 +22,11 @@
     },
     "tag": {
       "type": "string"
+    },
+    "SEO": {
+      "type": "component",
+      "component": "grids.seo-block",
+      "repeatable": false
     }
   }
 }
