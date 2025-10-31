@@ -203,6 +203,63 @@ export interface AdminRole extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface AdminSession extends Struct.CollectionTypeSchema {
+  collectionName: 'strapi_sessions';
+  info: {
+    description: 'Session Manager storage';
+    displayName: 'Session';
+    name: 'Session';
+    pluralName: 'sessions';
+    singularName: 'session';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  pluginOptions: {
+    'content-manager': {
+      visible: false;
+    };
+    'content-type-builder': {
+      visible: false;
+    };
+    i18n: {
+      localized: false;
+    };
+  };
+  attributes: {
+    absoluteExpiresAt: Schema.Attribute.DateTime & Schema.Attribute.Private;
+    childId: Schema.Attribute.String & Schema.Attribute.Private;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    deviceId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    expiresAt: Schema.Attribute.DateTime &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'admin::session'> &
+      Schema.Attribute.Private;
+    origin: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    sessionId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private &
+      Schema.Attribute.Unique;
+    status: Schema.Attribute.String & Schema.Attribute.Private;
+    type: Schema.Attribute.String & Schema.Attribute.Private;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    userId: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface AdminTransferToken extends Struct.CollectionTypeSchema {
   collectionName: 'strapi_transfer_tokens';
   info: {
@@ -370,6 +427,42 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     username: Schema.Attribute.String;
+  };
+}
+
+export interface ApiConstructionTypeConstructionType
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'construction_types';
+  info: {
+    displayName: 'Construction Type';
+    pluralName: 'construction-types';
+    singularName: 'construction-type';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    hashtag: Schema.Attribute.String;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::construction-type.construction-type'
+    > &
+      Schema.Attribute.Private;
+    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    packageType: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::package-type.package-type'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    tag: Schema.Attribute.String;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
   };
 }
 
@@ -687,6 +780,10 @@ export interface ApiPackageTypePackageType extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    constructionTypes: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::construction-type.construction-type'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -741,6 +838,10 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
           preset: 'defaultHtml';
         }
       >;
+    construction_type: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::construction-type.construction-type'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1489,9 +1590,11 @@ declare module '@strapi/strapi' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::permission': AdminPermission;
       'admin::role': AdminRole;
+      'admin::session': AdminSession;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::construction-type.construction-type': ApiConstructionTypeConstructionType;
       'api::construction.construction': ApiConstructionConstruction;
       'api::custom-page.custom-page': ApiCustomPageCustomPage;
       'api::dictionary.dictionary': ApiDictionaryDictionary;

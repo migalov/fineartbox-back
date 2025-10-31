@@ -93,6 +93,12 @@
       "type": "component",
       "component": "slider.source-image",
       "repeatable": true
+    },
+    "construction_type": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::construction-type.construction-type",
+      "inversedBy": "packages"
     }
   }
 }

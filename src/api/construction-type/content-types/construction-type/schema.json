@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "construction_types",
+  "info": {
+    "singularName": "construction-type",
+    "pluralName": "construction-types",
+    "displayName": "Construction Type"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "tag": {
+      "type": "string"
+    },
+    "hashtag": {
+      "type": "string"
+    },
+    "packages": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::package.package",
+      "mappedBy": "construction_type"
+    },
+    "packageType": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::package-type.package-type",
+      "inversedBy": "constructionTypes"
+    }
+  }
+}
