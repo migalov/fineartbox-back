@@ -1,3 +1,5 @@
+import './extensions/preview.js';
+
 const config = {
   locales: [
     // 'ar',
