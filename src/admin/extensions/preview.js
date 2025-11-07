@@ -11,9 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
     let x = event.pageX;
     let y = event.pageY;
     // console.log(event);
-    if(event.target.nodeName == "SPAN" && event.target.innerText.includes("https://static0")) {
-      console.log(event.target.innerText);
+    if((event.target.nodeName == "SPAN" && event.target.innerText.includes("https://static0"))) {
       img.src = event.target.innerText;
+    }
+    else if ((event.target.nodeName == "INPUT" && event.target.value.includes("https://static0"))) {
+      img.src = event.target.value;
     }
   });
 
