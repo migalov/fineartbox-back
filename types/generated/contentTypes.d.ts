@@ -761,7 +761,6 @@ export interface ApiPackageFormPackageForm extends Struct.CollectionTypeSchema {
       'api::package-form.package-form'
     > &
       Schema.Attribute.Private;
-    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
     publishedAt: Schema.Attribute.DateTime;
     tag: Schema.Attribute.String & Schema.Attribute.Unique;
     title: Schema.Attribute.String;
@@ -833,13 +832,6 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    aboutDrawing: Schema.Attribute.RichText &
-      Schema.Attribute.CustomField<
-        'plugin::ckeditor5.CKEditor',
-        {
-          preset: 'defaultHtml';
-        }
-      >;
     construction_type: Schema.Attribute.Relation<
       'manyToOne',
       'api::construction-type.construction-type'
@@ -848,9 +840,7 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Component<'grids.seo-block', false>;
-    drawing: Schema.Attribute.Media<'images'>;
     href: Schema.Attribute.String & Schema.Attribute.Unique;
-    image: Schema.Attribute.Media<'images'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -861,20 +851,11 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
       'manyToOne',
       'api::package-appointment.package-appointment'
     >;
-    package_form: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::package-form.package-form'
-    >;
     package_types: Schema.Attribute.Relation<
       'manyToMany',
       'api::package-type.package-type'
     >;
     packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
-    paperBags: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::paper-bag.paper-bag'
-    >;
-    previews: Schema.Attribute.Media<'images', true>;
     PreviewSourceImageArray: Schema.Attribute.Component<
       'slider.source-image',
       true
@@ -909,7 +890,6 @@ export interface ApiPaperBagPaperBag extends Struct.CollectionTypeSchema {
       'api::paper-bag.paper-bag'
     > &
       Schema.Attribute.Private;
-    packages: Schema.Attribute.Relation<'manyToMany', 'api::package.package'>;
     publishedAt: Schema.Attribute.DateTime;
     tag: Schema.Attribute.String;
     title: Schema.Attribute.String;

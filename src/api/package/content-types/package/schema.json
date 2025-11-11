@@ -18,23 +18,10 @@
       "type": "string",
       "unique": false
     },
-    "image": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
     "package_types": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::package-type.package-type",
-      "inversedBy": "packages"
-    },
-    "package_form": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::package-form.package-form",
       "inversedBy": "packages"
     },
     "href": {
@@ -61,33 +48,6 @@
       "type": "component",
       "component": "grids.seo-block",
       "repeatable": false
-    },
-    "previews": {
-      "type": "media",
-      "multiple": true,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "aboutDrawing": {
-      "type": "customField",
-      "customField": "plugin::ckeditor5.CKEditor",
-      "options": {
-        "preset": "defaultHtml"
-      }
-    },
-    "drawing": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "paperBags": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::paper-bag.paper-bag",
-      "inversedBy": "packages"
     },
     "PreviewSourceImageArray": {
       "type": "component",

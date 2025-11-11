@@ -14,12 +14,6 @@
     "title": {
       "type": "string"
     },
-    "packages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::package.package",
-      "mappedBy": "package_form"
-    },
     "tag": {
       "type": "string",
       "unique": true

@@ -35,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         aspect-ratio: 1/1;
         transform-origin: top;
         cursor: pointer;
+        z-index: 1000;
       }
         .image-preview--scale {
           transform: scale(3);
