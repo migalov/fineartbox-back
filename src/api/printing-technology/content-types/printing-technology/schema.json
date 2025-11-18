@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "printing_technologies",
+  "info": {
+    "singularName": "printing-technology",
+    "pluralName": "printing-technologies",
+    "displayName": "Printing technology"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    }
+  }
+}

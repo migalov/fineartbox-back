@@ -59,6 +59,30 @@
       "relation": "manyToOne",
       "target": "api::construction-type.construction-type",
       "inversedBy": "packages"
+    },
+    "materials": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::material.material",
+      "mappedBy": "packages"
+    },
+    "finishing": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::finishing.finishing",
+      "inversedBy": "packages"
+    },
+    "lodgement": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lodgement.lodgement",
+      "inversedBy": "packages"
+    },
+    "decor": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::decor.decor",
+      "inversedBy": "packages"
     }
   }
 }

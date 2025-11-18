@@ -565,6 +565,32 @@ export interface ApiCustomPageCustomPage extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDecorDecor extends Struct.CollectionTypeSchema {
+  collectionName: 'decors';
+  info: {
+    displayName: 'Decor';
+    pluralName: 'decors';
+    singularName: 'decor';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<'oneToMany', 'api::decor.decor'> &
+      Schema.Attribute.Private;
+    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiDictionaryDictionary extends Struct.SingleTypeSchema {
   collectionName: 'dictionaries';
   info: {
@@ -623,6 +649,35 @@ export interface ApiFilterConstructionFilterConstruction
   };
 }
 
+export interface ApiFinishingFinishing extends Struct.CollectionTypeSchema {
+  collectionName: 'finishings';
+  info: {
+    displayName: 'Finishing';
+    pluralName: 'finishings';
+    singularName: 'finishing';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::finishing.finishing'
+    > &
+      Schema.Attribute.Private;
+    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHeaderMenuHeaderMenu extends Struct.SingleTypeSchema {
   collectionName: 'header_menus';
   info: {
@@ -645,6 +700,35 @@ export interface ApiHeaderMenuHeaderMenu extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     menuContent: Schema.Attribute.Component<'ui.list-menu', true>;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiLodgementLodgement extends Struct.CollectionTypeSchema {
+  collectionName: 'lodgements';
+  info: {
+    displayName: 'Lodgement';
+    pluralName: 'lodgements';
+    singularName: 'lodgement';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::lodgement.lodgement'
+    > &
+      Schema.Attribute.Private;
+    packages: Schema.Attribute.Relation<'oneToMany', 'api::package.package'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -703,6 +787,35 @@ export interface ApiMapSiteMapSite extends Struct.SingleTypeSchema {
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiMaterialMaterial extends Struct.CollectionTypeSchema {
+  collectionName: 'materials';
+  info: {
+    displayName: 'Material';
+    pluralName: 'materials';
+    singularName: 'material';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::material.material'
+    > &
+      Schema.Attribute.Private;
+    packages: Schema.Attribute.Relation<'manyToMany', 'api::package.package'>;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -839,7 +952,12 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    decor: Schema.Attribute.Relation<'manyToOne', 'api::decor.decor'>;
     description: Schema.Attribute.Component<'grids.seo-block', false>;
+    finishing: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::finishing.finishing'
+    >;
     href: Schema.Attribute.String & Schema.Attribute.Unique;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -847,6 +965,14 @@ export interface ApiPackagePackage extends Struct.CollectionTypeSchema {
       'api::package.package'
     > &
       Schema.Attribute.Private;
+    lodgement: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::lodgement.lodgement'
+    >;
+    materials: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::material.material'
+    >;
     package_appointment: Schema.Attribute.Relation<
       'manyToOne',
       'api::package-appointment.package-appointment'
@@ -923,6 +1049,35 @@ export interface ApiPortfolioPortfolio extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     SEOBlock: Schema.Attribute.Component<'grids.seo-block', false>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPrintingTechnologyPrintingTechnology
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'printing_technologies';
+  info: {
+    displayName: 'Printing technology';
+    pluralName: 'printing-technologies';
+    singularName: 'printing-technology';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::printing-technology.printing-technology'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1579,17 +1734,22 @@ declare module '@strapi/strapi' {
       'api::construction-type.construction-type': ApiConstructionTypeConstructionType;
       'api::construction.construction': ApiConstructionConstruction;
       'api::custom-page.custom-page': ApiCustomPageCustomPage;
+      'api::decor.decor': ApiDecorDecor;
       'api::dictionary.dictionary': ApiDictionaryDictionary;
       'api::filter-construction.filter-construction': ApiFilterConstructionFilterConstruction;
+      'api::finishing.finishing': ApiFinishingFinishing;
       'api::header-menu.header-menu': ApiHeaderMenuHeaderMenu;
+      'api::lodgement.lodgement': ApiLodgementLodgement;
       'api::main-page.main-page': ApiMainPageMainPage;
       'api::map-site.map-site': ApiMapSiteMapSite;
+      'api::material.material': ApiMaterialMaterial;
       'api::package-appointment.package-appointment': ApiPackageAppointmentPackageAppointment;
       'api::package-form.package-form': ApiPackageFormPackageForm;
       'api::package-type.package-type': ApiPackageTypePackageType;
       'api::package.package': ApiPackagePackage;
       'api::paper-bag.paper-bag': ApiPaperBagPaperBag;
       'api::portfolio.portfolio': ApiPortfolioPortfolio;
+      'api::printing-technology.printing-technology': ApiPrintingTechnologyPrintingTechnology;
       'api::tab-card-item.tab-card-item': ApiTabCardItemTabCardItem;
       'api::tab-content.tab-content': ApiTabContentTabContent;
       'api::tab-section.tab-section': ApiTabSectionTabSection;
