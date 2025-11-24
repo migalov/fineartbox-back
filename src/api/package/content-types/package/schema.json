@@ -66,9 +66,9 @@
       "target": "api::material.material",
       "mappedBy": "packages"
     },
-    "finishing": {
+    "finishings": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::finishing.finishing",
       "inversedBy": "packages"
     },
