@@ -16,9 +16,9 @@
     },
     "packages": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::package.package",
-      "mappedBy": "lodgement"
+      "mappedBy": "lodgements"
     }
   }
 }

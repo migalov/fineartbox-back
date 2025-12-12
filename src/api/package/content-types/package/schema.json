@@ -72,9 +72,9 @@
       "target": "api::finishing.finishing",
       "inversedBy": "packages"
     },
-    "lodgement": {
+    "lodgements": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
       "target": "api::lodgement.lodgement",
       "inversedBy": "packages"
     },
